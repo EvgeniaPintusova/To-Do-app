@@ -1,0 +1,15 @@
+.content {
+  min-height: 100vh;
+  width: 52px;
+  background-color: var(--primary-color);
+  text-align: center;
+}
+
+.menuBtn {
+  background-color: var(--second-primary-color);
+  width: 52px;
+  padding: var(--space-xs);
+  margin-top: var(--space-m);
+  border: none;
+  cursor: pointer;
+}

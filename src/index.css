@@ -13,9 +13,13 @@
   --text-color: #373737;
   --placeholder-color: #cacaca;
   --border-color: #ececec;
+  --light-pink-color: #FEF6FF;
+
   --white-color: #fff;
 
-  --space-xs: 10px;
+  --radius: 4px;
+
+  --space-xs: 8px;
   --space-s: 15px;
-  --space-m: 25px;
+  --space-m: 24px;
 }
