@@ -1,9 +1,10 @@
-import './app.scss';
+import './app.module.css';
+import Header from '../header'
 
 export default function App() {
   return (
     <div className="App">
-      <h1>Hello word</h1>
+      <Header/>
     </div>
   );
 }
