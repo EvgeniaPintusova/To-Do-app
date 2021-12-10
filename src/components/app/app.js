@@ -8,7 +8,6 @@ import TodoList from "../todo-list";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
-  const [doneTodos, setDoneTodos] = useState([]);
 
   const addTodo = (todo) => {
     if (todo) {
@@ -28,7 +27,7 @@ export default function App() {
     const idx = todos.findIndex((el) => el.id === id);
     const oldItem = todos[idx];
     const newItem = { ...oldItem, ["completed"]: !oldItem["completed"] };
-    setTodos([...todos.slice(0, idx), newItem, ...todos.slice(idx + 1)]);
+    setTodos([...todos.slice(0, idx), ...todos.slice(idx + 1), newItem]);
   };
 
   const removeTodo = (id) => {
@@ -50,13 +49,18 @@ export default function App() {
             <Counter count={todos.length} />
             <TodoList
               counterText="To Do"
-              todos={todos}
+              todos={todos.filter((todo) => todo.completed === false)}
               handleToggle={handleToggle}
               removeTodo={removeTodo}
             />
           </div>
           <div className={styles.doneListContainer}>
-            <TodoList counterText="Completed" todos={doneTodos} />
+            <TodoList
+              counterText="Completed"
+              todos={todos.filter((todo) => todo.completed === true)}
+              handleToggle={handleToggle}
+              removeTodo={removeTodo}
+            />
           </div>
         </div>
       </div>

@@ -7,7 +7,6 @@ export default function Header() {
   return (
     <div className={styles.container}>
       <div className={styles.navbar}>
-        {" "}
         <Logo />
         <p className={styles.title}>Tasks</p>
       </div>
