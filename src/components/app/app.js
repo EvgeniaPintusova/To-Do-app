@@ -1,16 +1,26 @@
-import "./app.module.css";
+import styles from "./app.module.css";
 import Header from "../header";
 import Sidebar from "../sidebar";
-import Input from "../input-panel";
+import InputPanel from "../input-panel";
+import Counter from "../counter";
+import TodoList from "../todo-list";
 
 export default function App() {
-  const style = { display: "flex" };
   return (
-    <div className="App">
+    <div>
       <Header />
-      <div style={{ display: "flex" }}>
+      <div className={styles.content}>
         <Sidebar />
-        <Input placeholder='add text'/>
+        <div className={styles.listContent}>
+          <div className={styles.activeListContainer}>
+            <InputPanel placeholder="add text" />
+            <Counter count={9} />
+            <TodoList counterText="To Do" todos={[]} />
+          </div>
+          <div className={styles.doneListContainer}>
+            <TodoList counterText="Completed" isDone={true} todos={[]} />
+          </div>
+        </div>
       </div>
     </div>
   );
