@@ -2,15 +2,20 @@ import styles from "./input-panel.module.css";
 import Button from "../button";
 import { useState } from "react";
 
-export default function InputPanel({ placeholder, addTodo, editTodo }) {
+export default function InputPanel({
+  placeholder,
+  buttonContent,
+  changeTodo,
+}) {
   const [todoItem, setTodoItem] = useState("");
+
   const handleChange = (e) => {
     setTodoItem(e.currentTarget.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTodo(todoItem);
+    changeTodo(todoItem);
     setTodoItem("");
   };
 
@@ -23,7 +28,7 @@ export default function InputPanel({ placeholder, addTodo, editTodo }) {
         value={todoItem}
         onChange={handleChange}
       />
-      <Button className={styles.addBtn} textContent="add" />
+      <Button className={styles.addBtn} textContent={buttonContent} />
     </form>
   );
 }

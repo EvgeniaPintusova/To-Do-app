@@ -1,7 +1,24 @@
 import styles from "./todo-list-item.module.css";
 import Button from "../button";
 
-export default function TodoListItem({ todo, toggleTodo, removeTodo }) {
+export default function TodoListItem({
+  todo,
+  toggleTodo,
+  removeTodo,
+  editTodo,
+}) {
+  
+  const copyTodo = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        console.log("successfully copied");
+      })
+      .catch(() => {
+        console.log("something wrong");
+      });
+  };
+
   return (
     <div
       className={
@@ -26,8 +43,8 @@ export default function TodoListItem({ todo, toggleTodo, removeTodo }) {
         </div>
       ) : (
         <div>
-          <Button icon="edit" />
-          <Button icon="copy" />
+          <Button icon="edit" onClick={editTodo} />
+          <Button icon="copy" onClick={() => copyTodo(todo.title)} />
           <Button icon="delete" onClick={removeTodo} />
         </div>
       )}

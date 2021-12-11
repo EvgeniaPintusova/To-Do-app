@@ -7,6 +7,7 @@ export default function TodoList({
   counterText,
   handleToggle,
   removeTodo,
+  editTodo,
 }) {
   return (
     <div className={styles.listContainer}>
@@ -18,6 +19,7 @@ export default function TodoList({
             todo={todo}
             toggleTodo={() => handleToggle(todo.id)}
             removeTodo={() => removeTodo(todo.id)}
+            editTodo={() => editTodo(todo.id)}
           />
         ))}
       </div>

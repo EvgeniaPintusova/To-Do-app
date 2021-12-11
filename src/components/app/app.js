@@ -8,6 +8,8 @@ import TodoList from "../todo-list";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
+  const [toggleInput, setToggleInput] = useState(false);
+  const [editID, setEditID] = useState(null);
 
   const addTodo = (todo) => {
     if (todo) {
@@ -21,7 +23,20 @@ export default function App() {
     }
   };
 
-  const editTodo = () => {};
+  const saveTodo = (todo) => {
+    if (todo) {
+      const idx = todos.findIndex((el) => el.id === editID);
+      const oldItem = todos[idx];
+      const newItem = { ...oldItem, ["title"]: todo };
+      setTodos([...todos.slice(0, idx), newItem, ...todos.slice(idx + 1)]);
+      setToggleInput(false);
+    }
+  };
+
+  const editTodo = (id) => {
+    setToggleInput(true);
+    setEditID(id);
+  };
 
   const handleToggle = (id) => {
     const idx = todos.findIndex((el) => el.id === id);
@@ -42,16 +57,18 @@ export default function App() {
         <div className={styles.listContent}>
           <div className={styles.activeListContainer}>
             <InputPanel
-              placeholder="add text"
-              addTodo={addTodo}
-              editTodo={editTodo}
+              placeholder={toggleInput ? "edit todo" : "add text"}
+              buttonContent={toggleInput ? "save" : "add"}
+              changeTodo={toggleInput ? saveTodo : addTodo}
             />
+
             <Counter count={todos.length} />
             <TodoList
               counterText="To Do"
               todos={todos.filter((todo) => todo.completed === false)}
               handleToggle={handleToggle}
               removeTodo={removeTodo}
+              editTodo={editTodo}
             />
           </div>
           <div className={styles.doneListContainer}>
