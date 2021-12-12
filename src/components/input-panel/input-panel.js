@@ -8,7 +8,7 @@ export default function InputPanel({
   changeTodo,
 }) {
   const [todoItem, setTodoItem] = useState("");
-
+  
   const handleChange = (e) => {
     setTodoItem(e.currentTarget.value);
   };
