@@ -1,0 +1,9 @@
+.user{
+    display: flex;
+    align-items: center;
+    margin: var(--space-s);
+}
+.userIcon{
+    margin: var(--space-xs);
+    margin-right: 0;
+}

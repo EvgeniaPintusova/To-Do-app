@@ -1,0 +1,32 @@
+.content {
+  display: flex;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.listContent{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.activeListContainer {
+  width: 65%;
+}
+
+.doneListContainer {
+  width: 35%;
+}
+
+@media only screen and (max-width: 700px) {
+  .listContent {
+    flex-direction: column;
+    justify-content: unset;
+  }
+  .activeListContainer {
+    width: 100%;
+  }
+
+  .doneListContainer {
+    width: 100%;
+  }
+}

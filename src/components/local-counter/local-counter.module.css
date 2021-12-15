@@ -1,0 +1,4 @@
+.textBold {
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}

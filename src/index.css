@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+}
+:root {
+  --primary-color: #550dc9;
+  --error-color: #ff6363;
+  --second-primary-color: #440ba0;
+  --text-color: #373737;
+  --placeholder-color: #cacaca;
+  --border-color: #ececec;
+  --light-pink-color: #FEF6FF;
+
+  --white-color: #fff;
+
+  --radius: 4px;
+
+  --space-xs: 8px;
+  --space-s: 15px;
+  --space-m: 24px;
+}
