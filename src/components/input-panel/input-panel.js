@@ -2,13 +2,9 @@ import styles from "./input-panel.module.css";
 import Button from "../button";
 import { useState } from "react";
 
-export default function InputPanel({
-  placeholder,
-  buttonContent,
-  changeTodo,
-}) {
+export default function InputPanel({ placeholder, buttonContent, changeTodo }) {
   const [todoItem, setTodoItem] = useState("");
-  
+
   const handleChange = (e) => {
     setTodoItem(e.currentTarget.value);
   };

@@ -1,15 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./app.module.css";
 import Header from "../header";
 import Sidebar from "../sidebar";
 import InputPanel from "../input-panel";
 import Counter from "../counter";
 import TodoList from "../todo-list";
+import TodoService from "../../model/todo-service";
 
 export default function App() {
+  const todoService = new TodoService();
   const [todos, setTodos] = useState([]);
   const [toggleInput, setToggleInput] = useState(false);
   const [editID, setEditID] = useState(null);
+  const [errors, setErrors] = useState(null);
+
+  useEffect(() => {
+    todoService.getTodos().then(
+      (result) => {
+        setTodos(result.slice(0, 20)); //slice() just for fewer items
+      },
+      (error) => {
+        setErrors([...errors, error]);
+      }
+    );
+  }, [errors]);
 
   const addTodo = (todo) => {
     if (todo) {
@@ -19,7 +33,7 @@ export default function App() {
         title: todo,
         completed: false,
       };
-      setTodos([...todos, newTodo]);
+      setTodos([newTodo, ...todos]);
     }
   };
 
@@ -58,7 +72,9 @@ export default function App() {
         <div className={styles.listContent}>
           <div className={styles.activeListContainer}>
             <InputPanel
-              placeholder={toggleInput ? "edit todo" : "add text"}
+              placeholder={
+                toggleInput ? "Edit the task" : "+ Add a task, press Enter to save"
+              }
               buttonContent={toggleInput ? "save" : "add"}
               changeTodo={toggleInput ? saveTodo : addTodo}
             />

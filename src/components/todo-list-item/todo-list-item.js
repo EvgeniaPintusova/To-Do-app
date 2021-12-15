@@ -42,7 +42,7 @@ export default function TodoListItem({
           <Button icon="delete" onClick={removeTodo} />
         </div>
       ) : (
-        <div>
+        <div className={styles.buttonsContainer}>
           <Button icon="edit" onClick={editTodo} />
           <Button icon="copy" onClick={() => copyTodo(todo.title)} />
           <Button icon="delete" onClick={removeTodo} />

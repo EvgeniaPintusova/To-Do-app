@@ -45,3 +45,7 @@
   color: #a3a3a3;
   text-decoration: line-through;
 }
+
+.buttonsContainer {
+  display: flex;
+}
